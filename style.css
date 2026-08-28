@@ -1,0 +1,462 @@
+/* ============================================================
+   Dr.Aigabulov — стоматология, Павлодар
+   Палитра и типографика сняты с фирменных макетов клиники:
+   кремовый фон, тёплый тауп, объект на каменном подиуме.
+   ============================================================ */
+
+:root {
+  /* Цвет */
+  --cream:  #F7F2EA;   /* фон страницы */
+  --sand:   #EFE6D8;   /* вторичные секции */
+  --stone:  #DDD0BC;   /* подиум, границы */
+  --taupe:  #A28C71;   /* акцент — тёплый тауп из логотипа */
+  --taupe-d:#8A7358;   /* акцент в наведении */
+  --ink:    #262019;   /* основной текст */
+  --muted:  #7B7064;   /* вторичный текст */
+  --white:  #FFFFFF;
+
+  /* Типографика */
+  --display: "Manrope", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --body: "Golos Text", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+  /* Ритм */
+  --gutter: clamp(20px, 5vw, 40px);
+  --r: 18px;
+  --shadow-soft: 0 24px 60px -28px rgba(60, 46, 30, .32);
+  --shadow-card: 0 2px 4px rgba(60, 46, 30, .04), 0 12px 32px -16px rgba(60, 46, 30, .18);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+}
+
+body {
+  margin: 0;
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: 17px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+:focus-visible { outline: 2px solid var(--taupe); outline-offset: 3px; border-radius: 4px; }
+
+.wrap { width: min(1180px, 100% - var(--gutter) * 2); margin-inline: auto; }
+.section { padding: clamp(64px, 9vw, 118px) 0; }
+.section--sand { background: var(--sand); }
+
+/* ---------- Типографика ---------- */
+
+h1, h2, h3, h4 {
+  font-family: var(--display);
+  font-weight: 600;
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+  margin: 0 0 .5em;
+  text-wrap: balance;
+}
+h1 { font-size: clamp(2.4rem, 6.2vw, 4.15rem); font-weight: 500; }
+h2 { font-size: clamp(1.85rem, 4vw, 2.9rem); }
+h3 { font-size: 1.2rem; letter-spacing: -0.01em; }
+
+p { margin: 0 0 1.1em; }
+p:last-child { margin-bottom: 0; }
+
+.lead { font-size: clamp(1.02rem, 1.6vw, 1.16rem); color: var(--muted); max-width: 54ch; }
+
+/* Надзаголовок — тонкая разрядка, как в логотипе клиники */
+.eyebrow {
+  font-family: var(--display);
+  font-size: .7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .22em;
+  color: var(--taupe);
+  margin: 0 0 1.4em;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.eyebrow::before {
+  content: "";
+  width: 26px; height: 1px;
+  background: var(--stone);
+  flex: none;
+}
+
+/* ---------- Кнопки ---------- */
+
+.btn {
+  --btn-bg: var(--ink);
+  --btn-fg: var(--cream);
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  padding: 15px 30px;
+  background: var(--btn-bg);
+  color: var(--btn-fg);
+  border: 1px solid var(--btn-bg);
+  border-radius: 999px;
+  font-family: var(--display);
+  font-size: .95rem; font-weight: 600; letter-spacing: -0.01em;
+  cursor: pointer;
+  transition: transform .35s cubic-bezier(.2,.8,.3,1), background .3s ease, border-color .3s ease, color .3s ease;
+}
+.btn:hover { transform: translateY(-2px); }
+.btn--accent { --btn-bg: var(--taupe); --btn-fg: var(--white); }
+.btn--accent:hover { --btn-bg: var(--taupe-d); }
+.btn--quiet {
+  --btn-bg: transparent; --btn-fg: var(--ink);
+  border-color: var(--stone);
+}
+.btn--quiet:hover { border-color: var(--ink); }
+
+/* ---------- Шапка ---------- */
+
+.header {
+  position: sticky; top: 0; z-index: 60;
+  background: color-mix(in srgb, var(--cream) 86%, transparent);
+  backdrop-filter: blur(14px) saturate(1.2);
+  border-bottom: 1px solid transparent;
+  transition: border-color .3s ease, background .3s ease;
+}
+.header.is-stuck { border-bottom-color: var(--stone); }
+.header__inner { display: flex; align-items: center; gap: clamp(16px, 3vw, 40px); min-height: 78px; }
+
+/* Марка — повторяет постановку логотипа клиники */
+.brand { display: flex; align-items: center; gap: 11px; flex: none; }
+.brand svg { width: 26px; height: 30px; flex: none; }
+.brand__name {
+  font-family: var(--display);
+  font-size: .96rem; font-weight: 700;
+  letter-spacing: .1em;
+  line-height: 1.05;
+}
+.brand__sub {
+  display: block;
+  font-size: .55rem; font-weight: 500;
+  letter-spacing: .34em;
+  color: var(--muted);
+  text-transform: lowercase;
+  margin-top: 3px;
+}
+
+.nav { display: flex; gap: clamp(16px, 2.4vw, 30px); margin-left: auto; font-size: .93rem; }
+.nav a { color: var(--muted); position: relative; padding: 4px 0; transition: color .25s ease; }
+.nav a::after {
+  content: ""; position: absolute; left: 0; right: 100%; bottom: 0;
+  height: 1px; background: var(--taupe);
+  transition: right .35s cubic-bezier(.2,.8,.3,1);
+}
+.nav a:hover { color: var(--ink); }
+.nav a:hover::after { right: 0; }
+
+.header__end { display: flex; align-items: center; gap: 14px; margin-left: auto; }
+.nav + .header__end { margin-left: 0; }
+.header .btn { padding: 11px 22px; font-size: .88rem; }
+
+/* Переключатель языка */
+.lang { display: inline-flex; gap: 2px; padding: 3px; border: 1px solid var(--stone); border-radius: 999px; flex: none; }
+.lang button {
+  border: 0; background: transparent;
+  padding: 5px 12px;
+  font-family: var(--display); font-size: .74rem; font-weight: 700; letter-spacing: .08em;
+  color: var(--muted); cursor: pointer; border-radius: 999px;
+  transition: background .25s ease, color .25s ease;
+}
+.lang button[aria-pressed="true"] { background: var(--ink); color: var(--cream); }
+
+/* ---------- Подиум: фирменный приём клиники ---------- */
+
+.podium { position: relative; }
+.podium::after {
+  content: "";
+  position: absolute; left: 50%; bottom: -6px;
+  width: 74%; height: 26px;
+  transform: translateX(-50%);
+  background: radial-gradient(ellipse at center, rgba(120, 96, 66, .20), transparent 68%);
+  filter: blur(6px);
+  pointer-events: none;
+}
+
+/* ---------- Hero ---------- */
+
+.hero { padding: clamp(48px, 7vw, 96px) 0 clamp(64px, 9vw, 112px); }
+.hero__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.02fr) minmax(0, .98fr);
+  gap: clamp(32px, 5vw, 72px);
+  align-items: center;
+}
+.hero h1 { margin-bottom: .38em; }
+.hero h1 em {
+  font-style: normal;
+  color: var(--taupe);
+}
+.hero__actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 34px; }
+.hero__note {
+  margin-top: 26px;
+  font-size: .88rem;
+  color: var(--muted);
+  display: flex; align-items: center; gap: 9px;
+}
+.hero__note b { font-weight: 600; color: var(--ink); }
+
+/* Сцена: фото стоит на каменном подиуме */
+.scene { position: relative; }
+.scene__frame {
+  position: relative;
+  aspect-ratio: 4 / 4.6;
+  border-radius: 200px 200px var(--r) var(--r);
+  overflow: hidden;
+  background:
+    radial-gradient(120% 80% at 50% 12%, #FBF7F1, transparent 60%),
+    linear-gradient(168deg, var(--sand), var(--stone));
+  box-shadow: var(--shadow-soft);
+}
+.scene__frame img { width: 100%; height: 100%; object-fit: cover; }
+.scene__base {
+  height: 20px;
+  margin: 0 auto;
+  width: 86%;
+  border-radius: 0 0 40px 40px;
+  background: linear-gradient(var(--stone), #C9B99F);
+}
+
+/* Плейсхолдер, пока нет фото */
+.ph {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 12px; text-align: center; padding: 24px;
+  color: var(--muted);
+  font-family: var(--display); font-size: .74rem; font-weight: 600;
+  letter-spacing: .16em; text-transform: uppercase;
+}
+.ph svg { width: 40px; height: 46px; opacity: .5; }
+
+/* ---------- Акции ---------- */
+
+.offers { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(16px, 2.4vw, 26px); margin-top: 54px; }
+.offer {
+  position: relative;
+  background: var(--white);
+  border-radius: var(--r);
+  padding: 34px 30px 32px;
+  box-shadow: var(--shadow-card);
+  transition: transform .4s cubic-bezier(.2,.8,.3,1), box-shadow .4s ease;
+}
+.offer:hover { transform: translateY(-5px); box-shadow: 0 4px 8px rgba(60,46,30,.05), 0 26px 48px -22px rgba(60,46,30,.3); }
+.offer__ico {
+  width: 54px; height: 54px;
+  display: grid; place-items: center;
+  border-radius: 50%;
+  background: var(--sand);
+  margin-bottom: 22px;
+}
+.offer__ico svg { width: 26px; height: 28px; }
+.offer h3 { margin-bottom: .35em; }
+.offer p { color: var(--muted); font-size: .93rem; }
+.offer__price {
+  display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap;
+  margin-top: 24px; padding-top: 20px;
+  border-top: 1px solid var(--sand);
+  font-family: var(--display);
+}
+.offer__now { font-size: 1.6rem; font-weight: 700; letter-spacing: -0.03em; }
+.offer__was { font-size: .95rem; color: var(--muted); text-decoration: line-through; text-decoration-color: var(--taupe); }
+.offer__tag {
+  font-size: .72rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--taupe);
+}
+
+/* ---------- Имплантация: разрыв в ряду ---------- */
+
+.gap-block {
+  display: grid;
+  grid-template-columns: minmax(0, .95fr) minmax(0, 1.05fr);
+  gap: clamp(32px, 5vw, 76px);
+  align-items: center;
+}
+.teeth {
+  display: flex; align-items: flex-start; justify-content: center;
+  gap: clamp(4px, .9vw, 9px);
+  padding: clamp(46px, 7vw, 74px) clamp(14px, 3vw, 34px) clamp(52px, 7.5vw, 80px);
+  background: linear-gradient(170deg, var(--white), var(--sand));
+  border-radius: var(--r);
+  box-shadow: var(--shadow-card);
+}
+.tooth { width: clamp(46px, 7.6vw, 86px); flex: none; filter: drop-shadow(0 6px 10px rgba(90, 72, 50, .13)); }
+.tooth--missing { width: clamp(50px, 8.9vw, 93px); }
+.tooth svg { width: 100%; height: auto; display: block; }
+.tooth--missing .socket { transition: opacity .5s ease; }
+.tooth--missing .implant {
+  opacity: 0;
+  transform: translateY(20%);
+  transform-origin: 50% 100%;
+  transition: opacity .5s ease .15s, transform .75s cubic-bezier(.22,.9,.28,1) .15s;
+}
+.teeth.is-filled .tooth--missing .socket { opacity: 0; }
+.teeth.is-filled .tooth--missing .implant { opacity: 1; transform: translateY(0); }
+.teeth__cap {
+  margin-top: 26px; text-align: center;
+  font-family: var(--display); font-size: .76rem; font-weight: 600;
+  letter-spacing: .16em; text-transform: uppercase; color: var(--muted);
+}
+
+.steps { list-style: none; margin: 32px 0 0; padding: 0; display: grid; gap: 2px; }
+.steps li {
+  display: grid; grid-template-columns: 34px 1fr; gap: 16px;
+  padding: 18px 0; border-top: 1px solid var(--stone);
+  align-items: baseline;
+}
+.steps li:last-child { border-bottom: 1px solid var(--stone); }
+.steps .n {
+  font-family: var(--display); font-size: .76rem; font-weight: 700;
+  letter-spacing: .1em; color: var(--taupe);
+}
+.steps b { font-family: var(--display); font-weight: 600; display: block; margin-bottom: 2px; }
+.steps span.t { color: var(--muted); font-size: .93rem; }
+
+/* ---------- Прайс ---------- */
+
+.price { margin-top: 46px; border-top: 1px solid var(--stone); }
+.price__row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 20px 28px;
+  align-items: baseline;
+  padding: 22px 0;
+  border-bottom: 1px solid var(--stone);
+}
+.price__name { font-family: var(--display); font-weight: 600; font-size: 1.05rem; }
+.price__desc { color: var(--muted); font-size: .9rem; margin-top: 3px; }
+.price__val { font-family: var(--display); font-weight: 700; font-size: 1.05rem; white-space: nowrap; }
+.price__val small { display: block; font-weight: 500; font-size: .74rem; color: var(--muted); text-align: right; }
+
+/* ---------- Вопросы врачу ---------- */
+
+.faq-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.55fr) minmax(0, .95fr);
+  gap: clamp(30px, 5vw, 70px);
+  align-items: start;
+  margin-top: 46px;
+}
+.faq { min-width: 0; }
+.ask {
+  position: sticky; top: 108px;
+  background: var(--sand);
+  border-radius: var(--r);
+  padding: 34px 32px;
+}
+.ask h3 { margin-bottom: .5em; }
+.ask p { color: var(--muted); font-size: .95rem; }
+.ask .btn { margin-top: 22px; width: 100%; }
+@media (max-width: 980px) {
+  .faq-grid { grid-template-columns: 1fr; }
+  .ask { position: static; }
+}
+.faq details {
+  border-bottom: 1px solid var(--stone);
+}
+.faq details:first-child { border-top: 1px solid var(--stone); }
+.faq summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 24px 44px 24px 0;
+  position: relative;
+  font-family: var(--display); font-weight: 600; font-size: 1.08rem;
+  letter-spacing: -0.01em;
+  transition: color .25s ease;
+}
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary:hover { color: var(--taupe-d); }
+.faq summary::after {
+  content: ""; position: absolute; right: 6px; top: 50%;
+  width: 11px; height: 11px;
+  border-right: 1.5px solid var(--taupe); border-bottom: 1.5px solid var(--taupe);
+  transform: translateY(-70%) rotate(45deg);
+  transition: transform .35s cubic-bezier(.2,.8,.3,1);
+}
+.faq details[open] summary::after { transform: translateY(-20%) rotate(-135deg); }
+.faq__body { padding: 0 44px 26px 0; color: var(--muted); max-width: 62ch; }
+
+/* ---------- Контакты ---------- */
+
+.contacts { display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); gap: clamp(30px, 4vw, 60px); align-items: start; }
+.contacts dl { margin: 34px 0 0; display: grid; gap: 0; border-top: 1px solid var(--stone); }
+.contacts dl > div { padding: 20px 0; border-bottom: 1px solid var(--stone); }
+.contacts dt {
+  font-family: var(--display); font-size: .7rem; font-weight: 600;
+  letter-spacing: .18em; text-transform: uppercase; color: var(--taupe);
+  margin-bottom: 7px;
+}
+.contacts dd { margin: 0; font-family: var(--display); font-size: 1.12rem; font-weight: 500; }
+.contacts dd a { border-bottom: 1px solid var(--stone); transition: border-color .25s ease; }
+.contacts dd a:hover { border-color: var(--ink); }
+.contacts .btn { margin-top: 30px; }
+
+.map {
+  position: relative;
+  border-radius: var(--r);
+  overflow: hidden;
+  min-height: 420px;
+  background: linear-gradient(150deg, var(--sand), var(--stone));
+  box-shadow: var(--shadow-card);
+  display: grid; place-items: center;
+}
+.map iframe { width: 100%; height: 100%; min-height: 420px; border: 0; display: block; }
+
+/* ---------- Подвал ---------- */
+
+.footer { background: var(--ink); color: var(--sand); padding: clamp(48px, 6vw, 76px) 0 34px; }
+.footer .brand__name { color: var(--cream); }
+.footer .brand__sub { color: #9C9086; }
+.footer .brand svg path { fill: var(--cream); }
+.footer__top { display: flex; flex-wrap: wrap; gap: 30px; justify-content: space-between; align-items: flex-start; }
+.footer__links { display: flex; flex-wrap: wrap; gap: 12px; }
+.footer__links a {
+  padding: 10px 20px; border: 1px solid #453D33; border-radius: 999px;
+  font-family: var(--display); font-size: .88rem; font-weight: 500;
+  transition: background .25s ease, border-color .25s ease, color .25s ease;
+}
+.footer__links a:hover { background: var(--cream); border-color: var(--cream); color: var(--ink); }
+.footer__bottom {
+  margin-top: 44px; padding-top: 24px; border-top: 1px solid #3A322A;
+  display: flex; flex-wrap: wrap; gap: 12px; justify-content: space-between;
+  font-size: .82rem; color: #9C9086;
+}
+
+/* ---------- Появление при скролле ---------- */
+
+.js .rise { opacity: 0; transform: translateY(14px); }
+.rise.is-in { opacity: 1; transform: none; transition: opacity .45s ease, transform .5s cubic-bezier(.2,.8,.3,1); }
+@media (prefers-reduced-motion: reduce) { .js .rise { opacity: 1; transform: none; } }
+
+/* ---------- Адаптив ---------- */
+
+@media (max-width: 980px) {
+  .hero__grid, .gap-block, .contacts { grid-template-columns: 1fr; }
+  .gap-block .teeth { order: -1; }
+  .offers { grid-template-columns: 1fr; }
+  .nav { display: none; }
+  .scene__frame { aspect-ratio: 4 / 3.4; border-radius: 140px 140px var(--r) var(--r); }
+  .map, .map iframe { min-height: 320px; }
+}
+@media (max-width: 560px) {
+  body { font-size: 16px; }
+  .header__inner { min-height: 66px; gap: 10px; }
+  .brand__sub { display: none; }
+  .header .btn { padding: 9px 16px; font-size: .82rem; }
+  .header__end { gap: 8px; }
+  .lang button { padding: 5px 9px; font-size: .7rem; }
+  .hero__actions .btn { flex: 1 1 100%; }
+  .price__row { grid-template-columns: 1fr; }
+  .price__val small { text-align: left; }
+}

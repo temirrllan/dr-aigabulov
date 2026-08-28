@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dr.Aigabulov — записаться, адрес, услуги</title>
+<meta name="description" content="Стоматология Dr.Aigabulov, Павлодар. Запись в WhatsApp, адрес Лермонтова 114, цены и услуги.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700&family=Golos+Text:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+  body {
+    background:
+      radial-gradient(90% 55% at 50% 0%, #FDFAF5, transparent 70%),
+      linear-gradient(178deg, var(--cream) 40%, var(--sand));
+    min-height: 100vh;
+  }
+  .tap { width: min(460px, 100% - 40px); margin-inline: auto; padding: 44px 0 56px; }
+
+  .tap__head { text-align: center; }
+  .tap__mark {
+    width: 96px; height: 96px; margin: 0 auto 22px;
+    border-radius: 50%;
+    background: linear-gradient(160deg, #C7B8A2, #A28C71);
+    display: grid; place-items: center;
+    overflow: hidden;
+    box-shadow: 0 18px 40px -18px rgba(80, 62, 42, .55);
+  }
+  .tap__mark img { width: 100%; height: 100%; object-fit: cover; }
+  .tap__mark svg { width: 40px; height: 46px; }
+
+  .tap__name {
+    font-family: var(--display);
+    font-size: 1.06rem; font-weight: 700; letter-spacing: .13em;
+    margin: 0;
+  }
+  .tap__role {
+    font-family: var(--display);
+    font-size: .58rem; font-weight: 500; letter-spacing: .36em;
+    color: var(--muted); text-transform: lowercase; margin: 6px 0 0;
+  }
+  .tap__bio { margin: 18px 0 0; color: var(--ink); font-size: 1.02rem; }
+  .tap__where {
+    margin: 8px 0 0; font-size: .87rem; color: var(--muted);
+  }
+  .tap .lang { margin: 24px auto 0; display: flex; width: max-content; }
+
+  /* Оффер — то, ради чего чаще всего приходят из профиля */
+  .tap__offer {
+    margin: 30px 0 22px;
+    padding: 20px 24px;
+    background: var(--ink);
+    color: var(--cream);
+    border-radius: 16px;
+    display: flex; align-items: center; gap: 16px;
+  }
+  .tap__offer svg { width: 26px; height: 30px; flex: none; }
+  .tap__offer b {
+    font-family: var(--display); font-weight: 700; font-size: 1.12rem;
+    letter-spacing: -0.02em; display: block;
+  }
+  .tap__offer span { font-size: .82rem; color: #B9AFA3; }
+  .tap__offer s { color: #B9AFA3; text-decoration-color: var(--taupe); }
+
+  .links { display: grid; gap: 11px; }
+  .link {
+    display: flex; align-items: center; gap: 15px;
+    padding: 17px 22px;
+    background: var(--white);
+    border-radius: 15px;
+    box-shadow: var(--shadow-card);
+    transition: transform .35s cubic-bezier(.2,.8,.3,1), box-shadow .35s ease;
+  }
+  .link:hover { transform: translateY(-3px); box-shadow: 0 4px 8px rgba(60,46,30,.05), 0 22px 40px -20px rgba(60,46,30,.32); }
+  .link--accent { background: var(--taupe); color: var(--white); }
+  .link--accent .link__sub { color: rgba(255,255,255,.78); }
+  .link--accent .link__ico { background: rgba(255,255,255,.18); }
+  .link--accent .link__go { border-color: rgba(255,255,255,.4); }
+
+  .link__ico {
+    width: 40px; height: 40px; flex: none;
+    border-radius: 50%; background: var(--sand);
+    display: grid; place-items: center;
+    font-size: 1rem;
+  }
+  .link__ico svg { width: 19px; height: 19px; }
+  .link--accent .link__ico { color: #fff; }
+  .tap__offer svg { width: 22px; height: 32px; }
+  .link__txt { flex: 1; min-width: 0; }
+  .link__txt b { font-family: var(--display); font-weight: 600; font-size: .99rem; display: block; letter-spacing: -0.01em; }
+  .link__sub { font-size: .8rem; color: var(--muted); }
+  .link__go {
+    width: 26px; height: 26px; flex: none;
+    border: 1px solid var(--stone); border-radius: 50%;
+    display: grid; place-items: center;
+    transition: transform .35s cubic-bezier(.2,.8,.3,1);
+  }
+  .link:hover .link__go { transform: translateX(3px); }
+  .link__go::after {
+    content: ""; width: 6px; height: 6px;
+    border-top: 1.3px solid currentColor; border-right: 1.3px solid currentColor;
+    transform: rotate(45deg) translate(-1px, 1px);
+    opacity: .65;
+  }
+
+  .tap__foot {
+    margin-top: 32px; text-align: center;
+    font-size: .76rem; color: var(--muted); line-height: 1.55;
+  }
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-tooth" viewBox="0 0 24 28">
+      <path d="M12 2.2c2.1 0 3-.9 5.4-.9 3.1 0 5.1 2.3 5.1 5.9 0 3.2-1.1 5-1.8 7.6-.6 2.3-.7 4.4-1.1 6.9-.4 2.6-1.1 4.8-2.7 4.8-1.9 0-2.1-2.6-2.5-5.6-.3-2.3-.7-4.6-2.4-4.6s-2.1 2.3-2.4 4.6c-.4 3-.6 5.6-2.5 5.6-1.6 0-2.3-2.2-2.7-4.8-.4-2.5-.5-4.6-1.1-6.9C2.6 12.2 1.5 10.4 1.5 7.2c0-3.6 2-5.9 5.1-5.9 2.4 0 3.3.9 5.4.9Z"/>
+    </symbol>
+    <symbol id="i-implant" viewBox="0 0 26 38">
+      <path d="M13 1.4c2.2 0 3.1-1 5.6-1 3.2 0 5.3 2.4 5.3 6.2 0 3.3-1.1 5.2-1.9 7.9-.3 1-.5 2-.6 3.1H4.6c-.1-1.1-.3-2.1-.6-3.1-.8-2.7-1.9-4.6-1.9-7.9 0-3.8 2.1-6.2 5.3-6.2 2.5 0 3.4 1 5.6 1Z"/>
+      <path d="M10.4 17.6h5.2v3.4h-5.2z" opacity=".72"/>
+      <path d="M8.6 21.5h8.8l-.5 3.4H9.1zM9.4 26.1h7.2l-.5 3.4H9.9zM10.2 30.7h5.6l-.5 3.4h-4.6zM11 35.3h4l-.9 2.4h-2.2z" opacity=".82"/>
+    </symbol>
+    <symbol id="i-wa" viewBox="0 0 24 24">
+      <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.87 9.87 0 0 0 4.79 1.22c5.46 0 9.92-4.45 9.92-9.91C21.96 6.45 17.5 2 12.04 2Zm0 18.15a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.11.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.24-8.23 2.2 0 4.27.86 5.83 2.41a8.19 8.19 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.25 8.23Z"/>
+      <path d="M16.9 14.03c-.27-.14-1.6-.79-1.85-.88-.25-.09-.43-.14-.61.14-.18.27-.7.88-.86 1.06-.16.18-.32.2-.59.07-.27-.14-1.15-.42-2.19-1.35-.81-.72-1.35-1.61-1.51-1.88-.16-.27-.02-.42.12-.55.12-.12.27-.32.41-.47.14-.16.18-.27.27-.45.09-.18.05-.34-.02-.47-.07-.14-.61-1.47-.84-2.01-.22-.53-.44-.46-.61-.47h-.52c-.18 0-.47.07-.72.34-.25.27-.95.93-.95 2.26s.97 2.62 1.11 2.8c.14.18 1.9 2.9 4.61 4.07.64.28 1.15.44 1.54.57.65.21 1.24.18 1.7.11.52-.08 1.6-.65 1.83-1.29.23-.63.23-1.18.16-1.29-.07-.12-.25-.18-.52-.32Z"/>
+    </symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24">
+      <path d="M8.1 3.4c.4-.3 1-.2 1.3.2l1.9 2.7c.3.4.2.9-.1 1.2L9.7 8.8c-.3.3-.4.7-.2 1.1a12 12 0 0 0 4.6 4.6c.4.2.8.1 1.1-.2l1.3-1.5c.3-.3.8-.4 1.2-.1l2.7 1.9c.4.3.5.9.2 1.3l-1.2 1.6c-.6.8-1.6 1.1-2.5.8-2.5-.8-4.8-2.2-6.7-4.1s-3.3-4.2-4.1-6.7c-.3-.9 0-1.9.8-2.5l1.2-1.6Z"/>
+    </symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24">
+      <path d="M12 2.5c-3.9 0-7 3.1-7 7 0 5.1 6.3 11.4 6.6 11.7.2.2.6.2.8 0 .3-.3 6.6-6.6 6.6-11.7 0-3.9-3.1-7-7-7Zm0 9.8a2.8 2.8 0 1 1 0-5.6 2.8 2.8 0 0 1 0 5.6Z"/>
+    </symbol>
+    <symbol id="i-ig" viewBox="0 0 24 24">
+      <path d="M16.5 2.5h-9A5 5 0 0 0 2.5 7.5v9a5 5 0 0 0 5 5h9a5 5 0 0 0 5-5v-9a5 5 0 0 0-5-5Zm3.2 14a3.2 3.2 0 0 1-3.2 3.2h-9a3.2 3.2 0 0 1-3.2-3.2v-9a3.2 3.2 0 0 1 3.2-3.2h9a3.2 3.2 0 0 1 3.2 3.2v9Z"/>
+      <path d="M12 7.1a4.9 4.9 0 1 0 0 9.8 4.9 4.9 0 0 0 0-9.8Zm0 8a3.1 3.1 0 1 1 0-6.2 3.1 3.1 0 0 1 0 6.2Z"/>
+      <circle cx="17.2" cy="6.9" r="1.15"/>
+    </symbol>
+    <symbol id="i-ask" viewBox="0 0 24 24">
+      <path d="M12 2.5a9.5 9.5 0 1 0 0 19 9.5 9.5 0 0 0 0-19Zm0 17.3a7.8 7.8 0 1 1 0-15.6 7.8 7.8 0 0 1 0 15.6Z"/>
+      <path d="M12 6.6c-1.8 0-3.1 1-3.4 2.6-.1.5.3.9.8.9.4 0 .7-.2.8-.6.2-.7.8-1.1 1.7-1.1.9 0 1.6.5 1.6 1.2 0 .6-.3.9-1.2 1.5-1 .6-1.5 1.2-1.5 2.2v.3c0 .5.4.8.9.8s.9-.4.9-.8v-.2c0-.6.2-.9 1.1-1.4 1-.6 1.6-1.3 1.6-2.4 0-1.7-1.4-2.9-3.3-2.9Z"/>
+      <circle cx="12" cy="17" r="1.1"/>
+    </symbol>
+    <symbol id="i-globe" viewBox="0 0 24 24">
+      <path d="M12 2.5a9.5 9.5 0 1 0 0 19 9.5 9.5 0 0 0 0-19Zm6.9 6h-2.6a14 14 0 0 0-1.3-3.6 7.8 7.8 0 0 1 3.9 3.6ZM12 4.4c.7 1 1.4 2.4 1.8 4.1h-3.6c.4-1.7 1.1-3.1 1.8-4.1ZM4.4 12c0-.6.1-1.2.2-1.7h3a17 17 0 0 0 0 3.4h-3c-.1-.5-.2-1.1-.2-1.7Zm.7 3.5h2.6c.3 1.3.7 2.5 1.3 3.6a7.8 7.8 0 0 1-3.9-3.6Zm2.6-7H5.1A7.8 7.8 0 0 1 9 4.9a14 14 0 0 0-1.3 3.6ZM12 19.6c-.7-1-1.4-2.4-1.8-4.1h3.6c-.4 1.7-1.1 3.1-1.8 4.1Zm2.1-5.9h-4.2a15 15 0 0 1 0-3.4h4.2a15 15 0 0 1 0 3.4Zm.9 5.4c.6-1.1 1-2.3 1.3-3.6h2.6a7.8 7.8 0 0 1-3.9 3.6Zm1.6-5.4a17 17 0 0 0 0-3.4h3a7.9 7.9 0 0 1 0 3.4h-3Z"/>
+    </symbol>
+  </defs>
+</svg>
+
+<main class="tap">
+
+  <header class="tap__head">
+    <div class="tap__mark">
+      <img src="assets/logo.jpg" alt="" onerror="this.remove()" onload="var s=this.parentNode.querySelector('svg'); if(s) s.remove()">
+      <svg viewBox="0 0 24 28" aria-hidden="true"><use href="#i-tooth" fill="#fff"/></svg>
+    </div>
+    <h1 class="tap__name">DR.AIGABULOV</h1>
+    <p class="tap__role">dental clinic</p>
+    <p class="tap__bio" data-ru="Создаём здоровые улыбки" data-kk="Сау күлкі сыйлаймыз">Создаём здоровые улыбки</p>
+    <p class="tap__where" data-ru="Павлодар · Лермонтова 114" data-kk="Павлодар · Лермонтов 114">Павлодар · Лермонтова 114</p>
+
+    <div class="lang" role="group" aria-label="Язык">
+      <button type="button" data-lang="ru" aria-pressed="true">RU</button>
+      <button type="button" data-lang="kk" aria-pressed="false">KZ</button>
+    </div>
+  </header>
+
+  <div class="tap__offer">
+    <svg viewBox="0 0 26 38" aria-hidden="true"><use href="#i-implant" fill="#F7F2EA"/></svg>
+    <div>
+      <b>89 999 ₸ <s>150 000 ₸</s></b>
+      <span data-ru="Имплант под ключ: установка и коронка" data-kk="Имплант кілтпен: орнату және коронка">Имплант под ключ: установка и коронка</span>
+    </div>
+  </div>
+
+  <nav class="links">
+    <a class="link link--accent" href="https://wa.me/77783219766">
+      <span class="link__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-wa" fill="currentColor"/></svg></span>
+      <span class="link__txt">
+        <b data-ru="Записаться в WhatsApp" data-kk="WhatsApp арқылы жазылу">Записаться в WhatsApp</b>
+        <span class="link__sub" data-ru="Подберём удобное время" data-kk="Ыңғайлы уақыт таңдаймыз">Подберём удобное время</span>
+      </span>
+      <span class="link__go" aria-hidden="true"></span>
+    </a>
+
+    <a class="link" href="tel:+77783219766">
+      <span class="link__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-phone" fill="var(--taupe)"/></svg></span>
+      <span class="link__txt">
+        <b data-ru="Позвонить в клинику" data-kk="Клиникаға қоңырау шалу">Позвонить в клинику</b>
+        <span class="link__sub">+7 778 321 97 66</span>
+      </span>
+      <span class="link__go" aria-hidden="true"></span>
+    </a>
+
+    <a class="link" href="index.html#price">
+      <span class="link__ico" aria-hidden="true"><svg viewBox="0 0 24 28"><use href="#i-tooth" fill="var(--taupe)"/></svg></span>
+      <span class="link__txt">
+        <b data-ru="Услуги и цены" data-kk="Қызметтер мен бағалар">Услуги и цены</b>
+        <span class="link__sub" data-ru="Чистка 12 000 ₸, кариес 2+1" data-kk="Тазалау 12 000 ₸, кариес 2+1">Чистка 12 000 ₸, кариес 2+1</span>
+      </span>
+      <span class="link__go" aria-hidden="true"></span>
+    </a>
+
+    <a class="link" href="index.html#faq">
+      <span class="link__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-ask" fill="var(--taupe)"/></svg></span>
+      <span class="link__txt">
+        <b data-ru="Вопросы врачу-имплантологу" data-kk="Имплантолог дәрігерге сұрақтар">Вопросы врачу-имплантологу</b>
+        <span class="link__sub" data-ru="Больно ли, сколько ждать, что входит в цену" data-kk="Ауыра ма, қанша күту керек, бағаға не кіреді">Больно ли, сколько ждать, что входит в цену</span>
+      </span>
+      <span class="link__go" aria-hidden="true"></span>
+    </a>
+
+    <a class="link" href="https://2gis.kz/pavlodar/search/Лермонтова%20114" target="_blank" rel="noopener">
+      <span class="link__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-pin" fill="var(--taupe)"/></svg></span>
+      <span class="link__txt">
+        <b data-ru="Проложить маршрут" data-kk="Бағыт салу">Проложить маршрут</b>
+        <span class="link__sub" data-ru="Лермонтова 114, Павлодар — в 2GIS" data-kk="Лермонтов 114, Павлодар — 2GIS-те">Лермонтова 114, Павлодар — в 2GIS</span>
+      </span>
+      <span class="link__go" aria-hidden="true"></span>
+    </a>
+
+    <a class="link" href="https://www.instagram.com/dr.aigabulov_dentalclinic" target="_blank" rel="noopener">
+      <span class="link__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-ig" fill="var(--taupe)"/></svg></span>
+      <span class="link__txt">
+        <b>Instagram</b>
+        <span class="link__sub" data-ru="Работы клиники и ответы врача" data-kk="Клиника жұмыстары және дәрігер жауаптары">Работы клиники и ответы врача</span>
+      </span>
+      <span class="link__go" aria-hidden="true"></span>
+    </a>
+
+    <a class="link" href="index.html">
+      <span class="link__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-globe" fill="var(--taupe)"/></svg></span>
+      <span class="link__txt">
+        <b data-ru="Сайт клиники" data-kk="Клиника сайты">Сайт клиники</b>
+        <span class="link__sub" data-ru="Об имплантации, ценах и приёме" data-kk="Имплантация, бағалар және қабылдау туралы">Об имплантации, ценах и приёме</span>
+      </span>
+      <span class="link__go" aria-hidden="true"></span>
+    </a>
+  </nav>
+
+  <p class="tap__foot">
+    © <span id="year"></span> Dr.Aigabulov · Павлодар<br>
+    <span data-ru="Есть противопоказания, необходима консультация специалиста"
+          data-kk="Қарсы көрсетілімдері бар, маманмен кеңесу қажет">Есть противопоказания, необходима консультация специалиста</span>
+  </p>
+</main>
+
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+<script src="lang.js"></script>
+</body>
+</html>
